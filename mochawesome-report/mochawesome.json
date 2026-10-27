@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 1,
+    "failures": 1,
+    "start": "2026-10-21T19:56:34.769Z",
+    "end": "2026-10-21T19:56:38.445Z",
+    "duration": 3676,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 50,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8ca01800-dcc3-4b18-9b6e-ef44bd3f7183",
+      "title": "",
+      "fullFile": "C:\\Users\\INFINIX\\Documents\\Hana Shofiyah 3\\Digital Skola\\Learning Material Sesi 9 - Web UI Automation Fundamental\\UITesting-by-xpath-script2\\test\\login.js",
+      "file": "\\test\\login.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a88a737e-453f-407d-b5dd-22ff42f01318",
+          "title": "Open Sauce Demo",
+          "fullFile": "C:\\Users\\INFINIX\\Documents\\Hana Shofiyah 3\\Digital Skola\\Learning Material Sesi 9 - Web UI Automation Fundamental\\UITesting-by-xpath-script2\\test\\login.js",
+          "file": "\\test\\login.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should login and display shopping cart",
+              "fullTitle": "Open Sauce Demo Should login and display shopping cart",
+              "timedOut": false,
+              "duration": 3659,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "let options = new chrome.Options();\noptions.addArguments(\"--disable-features=PasswordLeakDetection\");\noptions.setUserPreferences({\n    \"credentials_enable_service\": false,\n    \"profile.password_manager_enabled\": false,\n    \"profile.password_manager_leak_detection\": false\n});\nlet driver = await new Builder()\n    .forBrowser(\"chrome\")\n    .setChromeOptions(options)\n    .build();\nawait driver.get(\"https://saucedemo.com/\");\n\n    \nlet usernameInput = await driver.findElement( //locater\n    By.id(\"user-name\")\n);\n//let usernameInput = await driver.findElement(By.xpath('//input[@data-testid=\"username-input\"]'));\n// console.log(\"test\" + usernameInput.length);\nlet passwordInput = await driver.findElement(\n    By.id(\"password\")\n);\nlet loginButton = await driver.findElement(\n    By.id(\"login-button\")\n);\nawait usernameInput.sendKeys(\"standard_user\");\nawait passwordInput.sendKeys(\"secret_sauce\");\nawait loginButton.click();\n\n// await driver.sleep(3000);\n// Assert 1: Ambil button shopping cart\nlet shoppingCart = await driver.wait(\n    until.elementLocated(\n        By.xpath(\"//*[@data-test='shopping-cart-link']\")\n    ),\n    10000\n)\nassert.strictEqual(\n    await shoppingCart.isDisplayed(),\n    false\n);\n// // Assert 2: Nyocokin Tittle\nlet title = await driver.getTitle();\nassert.strictEqual(title, \"Swag Labs\");// expected, actual\n// await driver.quit();",
+              "err": {
+                "message": "AssertionError: Expected values to be strictly equal:\n\ntrue !== false\n",
+                "estack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at Context.<anonymous> (test\\login.js:53:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
+                "diff": "- true\n+ false\n"
+              },
+              "uuid": "796fc9ff-cfc0-403f-b94b-16ca734f019d",
+              "parentUUID": "a88a737e-453f-407d-b5dd-22ff42f01318",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should login and display shopping cart",
+              "fullTitle": "Open Sauce Demo Should login and display shopping cart",
+              "timedOut": false,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "e1edc4f6-b858-4d45-bb03-7c7a0bf5da4b",
+              "parentUUID": "a88a737e-453f-407d-b5dd-22ff42f01318",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "796fc9ff-cfc0-403f-b94b-16ca734f019d"
+          ],
+          "pending": [
+            "e1edc4f6-b858-4d45-bb03-7c7a0bf5da4b"
+          ],
+          "skipped": [],
+          "duration": 3659,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 10000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.8.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.1.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
